@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: classicguess
+  namespace: classicguess
+  labels:
+    app: classicguess
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - classicguess.bevsoft.com
+      secretName: classicguess-tls
+  rules:
+    - host: classicguess.bevsoft.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: classicguess
+                port:
+                  number: 80

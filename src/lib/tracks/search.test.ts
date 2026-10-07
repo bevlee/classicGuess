@@ -22,7 +22,7 @@ describe('catalogue search', () => {
     expect(searchWorks('')).toEqual([]);
   });
   it('preserves accents, aliases, partial words and reordered queries', () => {
-    expect(searchWorks('dvorak new world')[0]?.id).toBe('dvorak-new-world');
+    expect(searchWorks('für elise')[0]?.id).toBe('beethoven-fur-elise');
     expect(searchWorks('48 chopin noct')[0]?.label).toContain('Op. 48');
     expect(searchWorks('goldberg')[0]?.id).toBe('bach-goldberg');
     expect(searchWorks('xy')).toEqual([]);

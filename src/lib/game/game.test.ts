@@ -30,12 +30,12 @@ describe('practice rounds', () => {
     const loading = createRound(track.id); expect(skipStage(loading)).toBe(loading); expect(submitGuess(loading, track.workId, track)).toBe(loading);
   });
   it('matches accents and aliases but does not accept composer alone or unrelated work', () => {
-    const dvorak = tracks.find(t => t.workId === 'dvorak-new-world')!;
-    expect(normalizeGuess('  Dvořák—9! ')).toBe('dvorak 9');
-    expect(matchesWork('NEW WORLD', dvorak)).toBe(true);
-    expect(matchesWork('Dvořák 9', dvorak)).toBe(true);
-    expect(matchesWork('Dvořák', dvorak)).toBe(false);
-    expect(matchesWork('new', dvorak)).toBe(false);
+    const moonlight = tracks.find(t => t.workId === 'beethoven-moonlight')!;
+    expect(normalizeGuess('  Frédéric—9! ')).toBe('frederic 9');
+    expect(matchesWork('MOONLIGHT SONATA', moonlight)).toBe(true);
+    expect(matchesWork('moonlight', moonlight)).toBe(true);
+    expect(matchesWork('Beethoven', moonlight)).toBe(false);
+    expect(matchesWork('moon', moonlight)).toBe(false);
   });
   it('accepts the same work for all Moonlight movements and distinguishes Chopin nocturnes', () => {
     const moonlight = tracks.filter(t => t.workId === 'beethoven-moonlight');

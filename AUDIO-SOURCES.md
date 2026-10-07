@@ -1,6 +1,6 @@
 # Recording sources
 
-Reviewed 7–8 October 2026. These permissions concern the recordings, not merely the compositions or source-page text. Source credits appear after reveal. Full originals stay in ignored `sources/`; game assets are normalized 40-second excerpts with metadata removed and an ending fade.
+Reviewed 7–8 October 2026. These permissions concern the recordings, not merely the compositions or source-page text. Source credits appear after reveal. The active game is piano-only. The Magic Flute overture, Eroica finale and New World Largo below are archived entries, excluded from the playable catalogue and answer search. Full originals stay in ignored `sources/`; game assets are normalized 40-second excerpts with metadata removed and an ending fade.
 
 Musopen’s Chopin collection carries CC0. Individual performers are left unspecified where that archive does not identify them. Modern public-domain releases are documented on their linked file pages. Liszt Nos. 8–10 use the explicit public-domain grants, rather than any alternative attribution/share-alike licence offered on those pages. Paul Pitman’s Moonlight recordings have a worldwide public-domain grant confirmed in Wikimedia VRT ticket 2008012110017088.
 

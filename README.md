@@ -1,6 +1,6 @@
-# Classical
+# Guess the piano piece
 
-A local, account-free classical guessing game built with SvelteKit 3, Svelte 5, TypeScript and pnpm. The interface follows the approved deep-green and brass mockup.
+A local, account-free classical piano guessing game built with SvelteKit 3, Svelte 5, TypeScript and pnpm. The interface follows the approved deep-green and brass mockup.
 
 ## Run
 
@@ -11,16 +11,45 @@ pnpm install
 pnpm dev
 ```
 
-Open http://127.0.0.1:5173. The 51 generated 40-second Opus excerpts are included under `static/audio`; the game does not download full recordings.
+Open http://127.0.0.1:5173. The 48 active 40-second Opus excerpts are included under `static/audio`; the game does not download full recordings.
+
+The active catalogue contains only solo piano recordings (46 work-level answers). The three orchestral entries are saved in `scripts/deferred-orchestral-catalogue.json` for possible later use.
 
 ## Gameplay
 
-- Type a piece, composer, alias or opus number to search the catalogue. All matches remain available in a scrollable list. Search tolerates spelling mistakes, ranks literal matches first and keeps numbers exact; select a suggestion to submit its full title. Typed guesses are checked against the work title and aliases. Movement identification is not required.
-- Clip lengths are 0.1, 0.5, 2, 8 and 15 seconds. Their scores are 1,000, 800, 600, 400 and 200.
-- Each wrong answer or skip consumes exactly one stage. Replaying a clip is free.
-- A correct answer or fifth failed attempt reveals the composer, work, movement and recording credits, and restarts the entire excerpt. Next is available immediately.
-- Track order uses a shuffled bag: no repeats within a catalogue cycle and no consecutive repeat across cycles.
-- Total points and completed pieces persist in this browser using localStorage. An unfinished round is replaced when the page reloads. Clear the `classical-session-v1` storage key to reset the counters.
+- Practice chooses one excerpt per work, shuffles the works, and plays through the cycle without repeats. When the catalogue is exhausted, a new cycle begins without immediately repeating the previous work. Points are shown for the current piece only; practice has no cumulative score or leaderboard submission.
+- Daily challenge uses five distinct works, published once per date in Postgres. Everyone gets the same excerpts in the same order. It resets at **midnight AEST (fixed UTC+10)**, including during daylight saving.
+- Clip lengths are 0.1, 0.5, 2, 8 and 15 seconds. Their scores are 1,000, 800, 600, 400 and 200; an unsolved piece earns zero. Daily maximum: 5,000.
+- Each wrong answer or skip consumes one stage. Replaying is free. Correct guesses get confetti; wrong guesses get subtle visual feedback. Reduced-motion preferences are respected.
+- Search matches piece, composer, aliases and opus numbers. All matches are scrollable. Spelling mistakes are tolerated in suggestions; numbers stay precise. Submitted guesses use the work's accepted names and aliases. Movement identification is not required.
+- Daily progress stays in localStorage until all five pieces are completed. Only then does the name field appear and a single result submission is sent. The server recomputes the score from the five histories. Names allow Unicode letters and spaces, up to 50 characters. Names need not be unique.
+- A completed run stays tied to its challenge date and can be submitted after midnight. An unfinished run from a previous day is replaced by the current day's challenge when reopening daily mode.
+- Equal scores share a leaderboard rank. Submission time determines display order within ties. Retrying the same submission returns the original result without creating another entry.
+
+## Database and local daily mode
+
+Practice works without a database. Daily mode requires Postgres and a signing secret. For a local database:
+
+```sh
+docker compose up -d database
+cp .env.example .env
+# Set DAILY_TOKEN_SECRET in .env to the output of: openssl rand -hex 32
+pnpm db:migrate
+pnpm dev
+```
+
+`DATABASE_URL` and `DAILY_TOKEN_SECRET` are server-only runtime variables. `.env` is ignored by Git and Docker builds. Keep the same signing secret across replicas/restarts. Migrations run transactionally with an advisory lock and are safe to rerun.
+
+Tables: `daily_challenges`, `daily_challenge_pieces`, and `daily_results`. Each published piece stores a metadata snapshot, preserving answer validation when the catalogue changes. Audio remains outside Postgres. Daily selections are published on the first request of the day, so no scheduler is required.
+
+API:
+
+- `GET /api/daily` — today's challenge, five excerpt IDs/audio URLs, AEST reset timestamp and a signed run token. Answers are not included in this response; the browser's practice catalogue remains public.
+- `POST /api/daily/results` — JSON `{ token, name, rounds: [{ trackId, guesses: [...] }] }`. An empty guess string means a skip. All five histories must end in a correct answer or exhaust five stages. Client totals are ignored. Identical retries are idempotent; changes to an already-submitted run return 409.
+- `GET /api/leaderboard?date=YYYY-MM-DD` — up to 50 leaders, total entry count and ranks. The date defaults to the current AEST date.
+- `GET /api/health` — server liveness; `?ready=1` also checks database/schema availability.
+
+A browser run token is not a player account. Clearing browser storage permits another run. Histories are validated, but cannot prove actual listening or prevent looking up answers; this is a casual leaderboard.
 
 ## Audio
 
@@ -63,12 +92,12 @@ pnpm build
 pnpm test:e2e
 ```
 
-Browser tests use Chromium (`pnpm exec playwright install chromium` if needed). Tests cover score tiers, attempt limits, aliases, shuffled bags, audio scheduling, real browser decoding, reveal replay, persistent counters, mobile width, download/export and failed-load recovery.
+Browser tests use Chromium (`pnpm exec playwright install chromium` if needed). Tests cover score tiers, aliases, work-level shuffle cycles, AEST boundaries, name validation, history validation, saved daily progress, audio, mobile layout and curation. With DATABASE_URL configured and migrated, browser tests also cover real Postgres publication, submissions, duplicate prevention and tied leaderboard ranks. Use TEST_DATABASE_URL to target a separate test database and PLAYWRIGHT_PORT to choose a dedicated test server port.
 
-## Static hosting
+## Deployment
 
-`pnpm build` writes a static SPA to `build/`. Configure your host to serve `200.html` for unknown app routes, including `/admin`. Audio files use immutable versioned names; set `Cache-Control: public, max-age=31536000, immutable` for `/audio/*` on the host. Do not apply immutable caching to the SPA fallback.
+`pnpm build` produces a Node server in `build/`; `pnpm start` runs it on port 3000 and loads `.env` when present. This is no longer a static-only deployment. Production can inject environment variables directly rather than using a file.
 
-No accounts, leaderboard, server scoring, full-composition streaming, or external storage are included. Client scores are for local practice only.
+Production: https://classicguess.bevsoft.com. The Dockerfile packages the Node server, bundled audio, and migration runner. [Deployment instructions](deploy/README.md) cover the Git-tagged Skaffold release and [Kubernetes manifests](k8s/kustomization.yaml). The app uses the existing Postgres database and has no PVC; migrations run before server startup.
 
 Code: MIT. Audio: independent licences listed in the catalogue and source notes.

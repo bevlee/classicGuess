@@ -1,6 +1,6 @@
 # Piano catalogue review
 
-Reviewed 8 October 2026. The catalogue contains 51 recordings representing 49 distinct work-level answers. Each recording has a local normalized 40-second excerpt. Cues are initial playtest candidates; popularity is an editorial selection.
+Reviewed 8 October 2026. The catalogue contains 48 solo piano recordings representing 46 distinct work-level answers. Each recording has a local normalized 40-second excerpt. Cues are initial playtest candidates; popularity is an editorial selection.
 
 The expansion completes all 21 Chopin nocturnes (including the two posthumous works), all four ballades, and all three Moonlight Sonata movements. Moonlight has one answer with three separately credited clips. Liszt coverage includes La Campanella and Transcendental Études Nos. 8 (Wilde Jagd), 9 (Ricordanza), and 10; the complete Liszt étude sets are not yet included.
 
@@ -10,7 +10,6 @@ The three previously proposed works—Für Elise, Gymnopédie No. 3 and the Bach
 
 | Composer | Work / movement | Recording source |
 | --- | --- | --- |
-| Antonín Dvořák | Symphony No. 9 “From the New World”, Op. 95 — II. Largo | [Musopen / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Antonin_Dvorak_-_symphony_no._9_in_e_minor_'from_the_new_world',_op._95_-_ii._largo.ogg) |
 | Claude Debussy | Clair de lune, from Suite bergamasque | [David O — Clair de lune](https://davidomusic.net/clairdelune) |
 | Erik Satie | Gymnopédie No. 1 | [Musopen / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Erik_Satie_-_gymnopedies_-_la_1_ere._lent_et_douloureux.ogg) |
 | Erik Satie | Gymnopédie No. 3 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Gymnop%C3%A9die%20no.3.ogg) |
@@ -57,10 +56,8 @@ The three previously proposed works—Für Elise, Gymnopédie No. 3 and the Bach
 | Ludwig van Beethoven | Piano Sonata No. 14 “Moonlight”, Op. 27 No. 2 — I. Adagio sostenuto | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sonate_Clair_de_lune.ogg) |
 | Ludwig van Beethoven | Piano Sonata No. 14 “Moonlight”, Op. 27 No. 2 — II. Allegretto | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Moonlight%20Sonata%20Allegretto.ogg) |
 | Ludwig van Beethoven | Piano Sonata No. 14 “Moonlight”, Op. 27 No. 2 — III. Presto agitato | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Moonlight%20Sonata%20Presto.ogg) |
-| Ludwig van Beethoven | Symphony No. 3 “Eroica”, Op. 55 — IV. Finale: Allegro molto | [Musopen / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Beethoven_SymphonyNo.3Eroica_LudwigVanBeethoven-SymphonyNo.3InEFlatMajorEroicaOp.55-04-FinaleAllegroMolto.ogg) |
 | Robert Schumann | Träumerei, from Kinderszenen, Op. 15 No. 7 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Robert%20Schumann%20-%20scenes%20from%20childhood,%20op.%2015%20-%20vii.%20dreaming.ogg) |
 | Sergei Rachmaninoff | Prelude in C-sharp minor, Op. 3 No. 2 | [U.S. National Park Service / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sergei_Rachmaninoff_performs_Rachmaninoff's_Prelude_in_C_sharp_minor,_Op._3.ogg) |
-| Wolfgang Amadeus Mozart | The Magic Flute, K. 620 — Overture | [Musopen / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mozart_-_Magic_Flute_Overture.ogg) |
 
 ## Recording rights still to resolve
 

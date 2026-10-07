@@ -10,18 +10,22 @@
     "prepare": "svelte-kit sync",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "node --env-file-if-exists=.env node_modules/@playwright/test/cli.js test",
+    "start": "node --env-file-if-exists=.env build",
+    "db:migrate": "node --env-file-if-exists=.env scripts/migrate.mjs"
   },
   "dependencies": {
     "@lucide/svelte": "^1.52.0",
+    "pg": "^8.23.1",
     "svelte": "5.57.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
-    "@sveltejs/adapter-static": "^4.0.0",
+    "@sveltejs/adapter-node": "^6.0.0",
     "@sveltejs/kit": "3.0.1",
     "@sveltejs/vite-plugin-svelte": "7.3.1",
     "@types/node": "^26.6.4",
+    "@types/pg": "^8.23.1",
     "svelte-check": "^4.7.6",
     "typescript": "^6.0.3",
     "vite": "8.3.3",
@@ -29,5 +33,6 @@
   },
   "imports": {
     "#lib/*": "./src/lib/*.ts"
-  }
+  },
+  "packageManager": "pnpm@10.17.1"
 }

@@ -35,3 +35,13 @@ export function makeBag(tracks: readonly Track[], previousId?: string): Track[] 
   if (bag.length > 1 && bag[0].id === previousId) [bag[0], bag[1]] = [bag[1], bag[0]];
   return bag;
 }
+
+/** One excerpt per distinct work in a cycle, including works with several movements. */
+export function makeWorkBag(tracks: readonly Track[], previousWorkId?: string, random = Math.random): Track[] {
+  const groups = new Map<string, Track[]>();
+  for (const track of tracks) groups.set(track.workId, [...(groups.get(track.workId) ?? []), track]);
+  const selected = [...groups.values()].map(group => group[Math.floor(random() * group.length)]);
+  const bag = shuffleTracks(selected, random);
+  if (bag.length > 1 && bag[0].workId === previousWorkId) [bag[0], bag[1]] = [bag[1], bag[0]];
+  return bag;
+}

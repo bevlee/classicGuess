@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import catalogue from '../src/lib/tracks/catalogue.json' with { type: 'json' };
 
-test('real audio timing, wrong guesses, reveal, totals, next and persistence', async ({ page }) => {
+test('practice audio timing, wrong guesses, reveal and next without cumulative points', async ({ page }) => {
   const errors: string[] = [];
   const fetched: string[] = [];
   page.on('pageerror', e => errors.push(e.message));
@@ -29,7 +29,9 @@ test('real audio timing, wrong guesses, reveal, totals, next and persistence', a
   await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts[1])).toEqual([0, .5]);
   await page.locator('#work').fill(current.work); await page.getByRole('button', { name: 'Guess', exact: true }).click();
   await expect(page.locator('.answer h2')).toHaveText(current.work);
-  await expect(page.locator('.stat strong').nth(0)).toHaveText('800'); await expect(page.locator('.stat strong').nth(1)).toHaveText('1');
+  await expect(page.locator('.stat strong')).toHaveText('1');
+  await expect(page.locator('.timeline-labels')).toContainText('+800 points earned');
+  await expect(page.getByText('Total points', { exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Next piece' })).toBeEnabled();
   await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts[2]?.[0])).toBe(0);
   await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts[2]?.[1])).toBeGreaterThan(39);
@@ -41,8 +43,8 @@ test('real audio timing, wrong guesses, reveal, totals, next and persistence', a
     await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts.at(-1))).toEqual([0, duration]);
   }
   await expect(page.locator('.stage.active')).toHaveText('15s'); await page.getByRole('button', { name: 'Skip & reveal' }).click();
-  await expect(page.locator('.stat strong').nth(0)).toHaveText('800'); await expect(page.locator('.stat strong').nth(1)).toHaveText('2');
-  await page.reload(); await expect(page.locator('.stat strong').nth(0)).toHaveText('800'); await expect(page.locator('.stat strong').nth(1)).toHaveText('2');
+  await expect(page.locator('.stat strong')).toHaveText('2');
+  await page.reload(); await expect(page.locator('.stat strong')).toHaveText('0');
   expect(errors).toEqual([]);
 });
 
@@ -70,7 +72,7 @@ test('curation previews a local recording and exports validated metadata', async
 test('load failures offer a retry and keep attempts intact', async ({ page }) => {
   await page.route('**/*.opus', route => route.fulfill({ status: 503, body: 'Unavailable' }));
   await page.goto('/'); await expect(page.getByRole('alert')).toContainText('503');
-  await expect(page.locator('.stage.active')).toHaveText('0.1s'); await expect(page.locator('.stat strong').nth(1)).toHaveText('0');
+  await expect(page.locator('.stage.active')).toHaveText('0.1s'); await expect(page.locator('.stat strong')).toHaveText('0');
   await page.unroute('**/*.opus'); await page.getByRole('button', { name: 'Try again', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Play clip', exact: true })).toBeEnabled();
 });
@@ -167,4 +169,40 @@ test('fuzzy suggestions tolerate typos but preserve opus numbers', async ({ page
   await expect(input).toHaveValue(/Beethoven.*Moonlight/);
   await input.fill('nocturn op84');
   await expect(page.getByRole('option')).toHaveCount(0);
+});
+
+test('guess effects celebrate success, distinguish misses, and respect reduced motion', async ({ page }) => {
+  await page.addInitScript(() => { Math.random = () => 0.999; });
+  await page.route('**/*.opus', route => route.fulfill({ path: 'static/audio/a7c91e-v1.opus', contentType: 'audio/ogg' }));
+  await page.goto('/');
+  const input = page.getByRole('combobox', { name: 'Which work do you hear?' });
+  const guess = page.getByRole('button', { name: 'Guess', exact: true });
+  await expect(input).toBeEnabled();
+  await input.fill('not the right piece'); await guess.click();
+  await expect(page.locator('.wrong-glow')).toHaveCount(1);
+  await expect(page.locator('.feedback')).toContainText('Not quite');
+  await expect(page.locator('.confetti')).toHaveCount(0);
+  await input.fill('still incorrect'); await guess.click();
+  await expect(page.locator('.stage.active')).toHaveText('2s');
+  await input.fill('goldberg'); await guess.click();
+  await expect(page.locator('.confetti i')).toHaveCount(64);
+  await expect(page.locator('.answer-correct')).toHaveCount(1);
+  await expect(page.locator('.feedback')).toHaveText('Well heard.');
+  await page.screenshot({ path: 'test-results/correct-guess-effects.png', fullPage: true });
+  await page.getByRole('button', { name: 'Next piece' }).click();
+  await expect(input).toBeEnabled();
+  await expect(page.locator('.confetti')).toHaveCount(0);
+  for (let i = 0; i < 5; i++) { await input.fill('incorrect piece'); await guess.click(); }
+  await expect(page.locator('.answer-missed')).toHaveCount(1);
+  await expect(page.locator('.feedback')).toHaveText('One for next time.');
+  await expect(page.locator('.confetti')).toHaveCount(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await expect(input).toBeEnabled();
+  await input.fill('incorrect piece'); await guess.click();
+  await expect(page.locator('.wrong-glow')).toHaveCount(1);
+  expect(await page.locator('.guess-area').evaluate(element => element.getAnimations().length)).toBe(0);
+  await input.fill('goldberg'); await guess.click();
+  await expect(page.locator('.confetti')).toBeHidden();
+  await expect(page.locator('.feedback')).toHaveText('Well heard.');
 });

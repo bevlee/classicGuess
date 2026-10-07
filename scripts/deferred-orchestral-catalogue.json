@@ -1,0 +1,77 @@
+[
+  {
+    "id": "b4f82d-v1",
+    "workId": "mozart-magic-flute",
+    "composer": "Wolfgang Amadeus Mozart",
+    "work": "The Magic Flute, K. 620",
+    "movement": "Overture",
+    "aliases": [
+      "magic flute",
+      "the magic flute",
+      "die zauberflote",
+      "zauberflote",
+      "mozart magic flute",
+      "k 620"
+    ],
+    "audioUrl": "/audio/b4f82d-v1.opus",
+    "cueStart": 50,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Mozart_-_Magic_Flute_Overture.ogg",
+      "performer": "Musopen Symphony",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "c6e12b-v1",
+    "workId": "beethoven-eroica",
+    "composer": "Ludwig van Beethoven",
+    "work": "Symphony No. 3 “Eroica”, Op. 55",
+    "movement": "IV. Finale: Allegro molto",
+    "aliases": [
+      "eroica",
+      "beethoven 3",
+      "symphony 3",
+      "symphony no 3",
+      "beethoven symphony 3",
+      "op 55"
+    ],
+    "audioUrl": "/audio/c6e12b-v1.opus",
+    "cueStart": 94,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Beethoven_SymphonyNo.3Eroica_LudwigVanBeethoven-SymphonyNo.3InEFlatMajorEroicaOp.55-04-FinaleAllegroMolto.ogg",
+      "performer": "Czech National Symphony Orchestra",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "f3d71a-v1",
+    "workId": "dvorak-new-world",
+    "composer": "Antonín Dvořák",
+    "work": "Symphony No. 9 “From the New World”, Op. 95",
+    "movement": "II. Largo",
+    "aliases": [
+      "new world",
+      "new world symphony",
+      "dvorak 9",
+      "symphony 9",
+      "symphony no 9",
+      "new world largo",
+      "from the new world"
+    ],
+    "audioUrl": "/audio/f3d71a-v1.opus",
+    "cueStart": 44,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Antonin_Dvorak_-_symphony_no._9_in_e_minor_'from_the_new_world',_op._95_-_ii._largo.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+  }
+]

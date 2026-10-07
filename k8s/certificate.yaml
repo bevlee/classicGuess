@@ -1,0 +1,16 @@
+# Single-host cert: letsencrypt-prod solves http01, which can't issue wildcards.
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: classicguess
+  namespace: classicguess
+  labels:
+    app: classicguess
+spec:
+  commonName: classicguess.bevsoft.com
+  dnsNames:
+    - classicguess.bevsoft.com
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  secretName: classicguess-tls
