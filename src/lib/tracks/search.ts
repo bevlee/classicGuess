@@ -46,7 +46,7 @@ export function searchWorks(text: string) {
     const scores = tokens.map(token => Math.min(...work.words.map(word => wordScore(token, word))));
     const fuzzy = scores.some(score => score >= 2);
     const score = scores.reduce((sum, value) => sum + value, 0);
-    return { id: work.id, label: work.label, fuzzy, score };
+    return { id: work.id, label: work.label, title: work.title, composer: work.composer, reference: work.reference, fuzzy, score };
   }).filter(work => Number.isFinite(work.score))
     .sort((a, b) => a.score - b.score || a.label.localeCompare(b.label));
 }

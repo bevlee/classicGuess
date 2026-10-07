@@ -51,7 +51,12 @@ test.describe('Postgres daily challenges', () => {
     const input = page.getByRole('combobox', { name: 'Which work do you hear?' });
     await expect(input).toBeEnabled();
     await expect(page.locator('#player-name')).toHaveCount(0);
-    await page.getByRole('button', { name: 'Skip to a longer clip' }).click();
+    await expect(input).toBeFocused();
+    await expect(page.getByRole('region', { name: 'Daily leaderboard' })).toHaveCount(0);
+    await expect(page.getByRole('link', { name: 'View leaderboard' })).toHaveCount(0);
+    await expect(page.locator('.daily-progress li')).toHaveCount(5);
+    await expect(page.locator('.daily-progress [aria-current=step]')).toHaveAttribute('aria-label', 'Piece 1: current');
+    await page.getByRole('button', { name: 'Hear more' }).click();
     await page.reload();
     await expect(input).toBeEnabled();
     await expect(page.locator('.stage.active')).toHaveText('0.5s');
@@ -60,11 +65,15 @@ test.describe('Postgres daily challenges', () => {
       const work = catalogue.find(track => track.id === day.pieces[i].id)!;
       await input.fill(work.work); await page.getByRole('button', { name: 'Guess', exact: true }).click();
       await expect(page.locator('.answer h2')).toHaveText(work.work);
+      await expect(page.locator('.daily-progress .completed')).toHaveCount(i + 1);
+      await expect(page.getByRole('button', { name: i === 4 ? 'See your score' : 'Next piece', exact: true })).toBeFocused();
       expect(submissions).toHaveLength(0);
       await page.getByRole('button', { name: i === 4 ? 'See your score' : 'Next piece', exact: true }).click();
     }
     await expect(page.getByRole('region', { name: 'Daily challenge results' })).toBeVisible();
     await expect(page.locator('.daily-total')).toContainText('4,800');
+    await expect(page.getByRole('region', { name: 'Daily leaderboard' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'View leaderboard' })).toBeVisible();
     expect(submissions).toHaveLength(0);
     await page.locator('#player-name').fill('Name123');
     await page.getByRole('button', { name: 'Submit score' }).click();

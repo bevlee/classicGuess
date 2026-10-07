@@ -28,6 +28,5 @@
     <table><thead><tr><th scope="col">Rank</th><th scope="col">Name</th><th scope="col">Points</th></tr></thead>
       <tbody>{#each board.entries as entry}<tr class:your-result={entry.id === refresh}><td>{entry.rank}</td><th scope="row">{entry.name}</th><td>{entry.score.toLocaleString()}</td></tr>{/each}</tbody>
     </table>
-    <p class="muted small">{board.totalEntries} {board.totalEntries === 1 ? 'entry' : 'entries'} · Equal scores share a rank</p>
   {:else}<p class="muted small">No scores yet. Finish all five pieces to add yours.</p>{/if}
 </section>

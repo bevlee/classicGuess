@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import { goto } from '$app/navigation';
-  import { Play, Square, ArrowRight, SkipForward, Volume2, RotateCcw, CircleCheck, CircleX, CircleHelp } from '@lucide/svelte';
+  import { Play, Square, ArrowRight, SkipForward, Volume2, RotateCcw, CircleCheck, CircleX } from '@lucide/svelte';
   import { WebAudioPlayer } from '#lib/audio/player';
   import { stages } from '#lib/game/stages';
   import { createRound, readyRound, submitGuess, skipStage, makeWorkBag } from '#lib/game/game';
@@ -31,12 +31,14 @@
   let submitted = $state<DailyResult | null>(null);
   let modeRequest = 0;
   const dailyScore = $derived(dailyScores.reduce((sum, score) => sum + score, 0));
-  let played = $state(0);
   let selected = $state('');
   let error = $state('');
   let message = $state('');
   let effect = $state<'correct' | 'wrong' | 'missed' | null>(null);
   let effectId = $state(0);
+  let workInput = $state<HTMLInputElement>();
+  let nextButton = $state<HTMLButtonElement>();
+  let hasListened = $state(false);
   let guessForm = $state<HTMLFormElement>();
   let effectTimer: ReturnType<typeof setTimeout> | undefined;
   let shake: Animation | undefined;
@@ -51,9 +53,17 @@
   const revealed = $derived(round.status === 'revealed');
   const dailyPosition = $derived(Math.min(5, dailyRounds.length + (revealed ? 0 : 1)));
   const duration = $derived(revealed ? (track?.excerptDuration ?? 40) : stage.duration);
+  const playLabel = $derived(playing ? 'Stop playback' : revealed ? 'Play full excerpt' : hasListened ? 'Listen again' : 'Play clip');
   const format = (n: number) => n.toLocaleString();
   const timestamp = (n: number) => `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, '0')}`;
 
+  async function focusRound() {
+    const request = loadRequest;
+    await tick();
+    if (request !== loadRequest || dailyLoading || dailyError || dailyFinished) return;
+    if (revealed) nextButton?.focus({ preventScroll: true });
+    else if (round.status === 'guessing') workInput?.focus({ preventScroll: true });
+  }
   function resetEffects() {
     clearTimeout(effectTimer);
     shake?.cancel();
@@ -106,7 +116,7 @@
         await loadTrack(piece);
       }
     } catch (cause) { if (request === modeRequest) dailyError = cause instanceof Error ? cause.message : 'The daily challenge could not be loaded.'; }
-    finally { if (request === modeRequest) dailyLoading = false; }
+    finally { if (request === modeRequest) { dailyLoading = false; void focusRound(); } }
   }
   function chooseMode(next: 'practice' | 'daily') {
     if (next === mode && !dailyError) return;
@@ -133,6 +143,7 @@
     resetEffects();
     resumeAfterLoad = resume;
     const request = ++loadRequest;
+    hasListened = false;
     track = next; round = createRound(next.id); selected = ''; error = ''; message = ''; elapsed = 0;
     try {
       await player.load(next.audioUrl);
@@ -140,6 +151,7 @@
       if (player.duration < 15) throw new Error('This recording is too short for a round.');
       round = resume && resume.trackId === next.id && ['guessing', 'revealed'].includes(resume.status) ? resume : readyRound(round);
       resumeAfterLoad = undefined;
+      void focusRound();
       persistDaily();
       if (mode === 'practice' && queue[0]) void player.prefetch(queue[0].audioUrl).catch(() => {});
     } catch (cause) {
@@ -163,10 +175,12 @@
   async function play() {
     if (playing) { player.stop(); return; }
     const id = round.trackId;
+    const stageIndex = round.stageIndex;
     error = '';
     try {
       if (revealed) await player.playFrom(0);
       else await player.playClip(0, stage.duration);
+      if (id === round.trackId && stageIndex === round.stageIndex) hasListened = true;
     } catch (cause) {
       if (id === round.trackId) error = cause instanceof Error ? cause.message : 'Playback could not start.';
     }
@@ -175,11 +189,11 @@
     if (updated === round) return;
     player.stop(); elapsed = 0;
     const wasRevealed = revealed;
+    hasListened = false;
     round = updated; selected = '';
     if (updated.status === 'revealed' && !wasRevealed) {
       if (mode === 'daily') { dailyRounds = [...dailyRounds, { trackId: updated.trackId, guesses: [...updated.guesses] }]; dailyScores = [...dailyScores, updated.score]; }
-      else played++;
-      message = updated.solved ? 'Well heard.' : 'One for next time.';
+      message = updated.solved ? 'Well heard.' : '';
       showEffect(updated.solved ? 'correct' : 'missed');
       // Resume synchronously within the guess/skip click before scheduling replay.
       void play();
@@ -189,6 +203,7 @@
       else showEffect('wrong');
     }
     persistDaily();
+    void focusRound();
   }
   function guess() {
     if (track && selected) apply(submitGuess(round, selected, track));
@@ -217,31 +232,33 @@
 {#if effect === 'correct'}{#key effectId}<Confetti/>{/key}{/if}
 
 <div class="game-shell">
-  <aside class="session-panel" aria-label="Your session">
+  <main class="game-main">
     <nav class="mode-switch" aria-label="Game mode">
       <button class:chosen={mode === 'practice'} aria-pressed={mode === 'practice'} disabled={submitting} onclick={() => chooseMode('practice')}>Practice</button>
       <button class:chosen={mode === 'daily'} aria-pressed={mode === 'daily'} disabled={submitting} onclick={() => chooseMode('daily')}>Daily challenge</button>
     </nav>
-    <div class="session-stats">
-      {#if mode === 'daily'}<div class="stat"><strong>{format(dailyScore)}</strong><span>Daily points / 5,000</span></div><div class="stat"><strong>{dailyRounds.length} / 5</strong><span>Pieces completed</span></div>
-      {:else}<div class="stat"><strong>{format(played)}</strong><span>Pieces played</span></div>{/if}
-    </div>
-    <div class="rule"></div>
-    <p class="muted small">A wrong guess or skip gives you a longer listen.</p>
-    <div class="practice"><span></span>{mode === 'practice' ? 'Unlimited practice' : 'Five pieces · One challenge'}</div>
-    {#if mode === 'daily'}<p class="daily-reset">Resets at midnight AEST<br/>UTC+10 all year</p>{/if}
-    <a class="leaderboard-link" href="/leaderboard">View leaderboard <ArrowRight size={13}/></a>
-  </aside>
-
-  <main class="game-main">
     {#if effect === 'correct'}{#key effectId}<div class="success-glow" aria-hidden="true"></div>{/key}{/if}
     <header class="game-header"><h1>Guess the piano piece</h1></header>
+    {#if mode === 'daily'}
+      <div class="daily-status">
+        <ol class="daily-progress" aria-label="Daily challenge progress">
+          {#each Array(5) as _, index}
+            <li class:completed={index < dailyRounds.length} class:current={!dailyFinished && index + 1 === dailyPosition}
+              aria-current={!dailyFinished && index + 1 === dailyPosition ? 'step' : undefined}
+              aria-label={`Piece ${index + 1}: ${index < dailyRounds.length ? 'completed' : index + 1 === dailyPosition ? 'current' : 'upcoming'}`}>
+              {#if index < dailyRounds.length}<CircleCheck size={16}/>{:else}<span>{index + 1}</span>{/if}
+            </li>
+          {/each}
+        </ol>
+        <p class="daily-points">{format(dailyScore)} / 5,000 points</p>
+        <p class="daily-reset">Resets at midnight AEST<br/>UTC+10</p>
+      </div>
+    {/if}
     {#if mode === 'daily' && dailyLoading}<p class="daily-state" role="status">Loading daily challenge…</p>
     {:else if mode === 'daily' && dailyError}<div class="daily-state" role="alert"><p>{dailyError}</p><button class="secondary" onclick={enterDaily}>Retry daily challenge</button></div>
     {:else if mode === 'daily' && dailyFinished}
       <section class="daily-summary" aria-label="Daily challenge results">
         <p class="round-label">DAILY CHALLENGE · {challenge?.date}</p>
-        <h2>Five pieces. Well played.</h2>
         <div class="daily-total">{format(submitted?.score ?? dailyScore)}<span> / {format(DAILY_MAX_SCORE)} points</span></div>
         <div class="daily-score-grid">{#each dailyScores as score, index}<div><span>Piece {index + 1}</span><strong>{format(score)}</strong></div>{/each}</div>
         {#if submitted}<div class="submission-success" role="status"><CircleCheck size={18}/><p>Score submitted as <strong>{submitted.name}</strong>.<br/>Rank {submitted.rank} when submitted.</p></div>
@@ -252,10 +269,12 @@
           <button class="primary" disabled={submitting || !displayName.trim()}>{submitting ? 'Submitting…' : 'Submit score'}<ArrowRight size={17}/></button>
           {#if submissionError}<p class="submission-error" role="alert">{submissionError}</p>{/if}
         </form>{/if}
+        {#if challenge}<Leaderboard date={challenge.date} refresh={submitted?.id ?? ''}/>{/if}
+        <a class="leaderboard-link" href="/leaderboard">View leaderboard <ArrowRight size={13}/></a>
         <button class="secondary" disabled={submitting} onclick={() => chooseMode('practice')}>Keep practising</button>
       </section>
     {:else}
-    <div class="round-label">{revealed ? 'ANSWER REVEALED' : mode === 'daily' ? `DAILY · PIECE ${dailyPosition} OF 5` : `PRACTICE · PIECE ${String(played + 1).padStart(2, '0')}`}</div>
+    <div class="round-label">{revealed ? 'ANSWER REVEALED' : mode === 'daily' ? `DAILY · PIECE ${dailyPosition} OF 5` : 'PRACTICE'}</div>
     <div class="stages" aria-label="Clip stages">
       {#each stages as item, i}
         <div class:active={round.stageIndex === i} class:past={round.stageIndex > i} class="stage" aria-current={round.stageIndex === i ? 'step' : undefined}>{item.duration}s</div>
@@ -266,41 +285,34 @@
     </div>
     <div class="timeline-labels"><span>{revealed ? `${timestamp(elapsed)} / ${timestamp(duration)}` : `${stage.duration} seconds`}</span><span>{revealed ? `${round.solved ? '+' : ''}${format(round.score)} points earned` : `${format(stage.score)} points available`}</span></div>
     <div class="listen-area">
-      <button class="big-play" onclick={play} disabled={round.status === 'loading'} aria-label={playing ? 'Stop playback' : revealed ? 'Play full excerpt' : 'Play clip'}>
+      <div class="play-control"><button class="big-play" onclick={play} disabled={round.status === 'loading'} aria-label={playLabel}>
         {#if playing}<Square size={29} fill="currentColor"/>{:else}<Play size={34} fill="currentColor"/>{/if}
-      </button>
+      </button><span class="play-label" aria-hidden="true">{playLabel}</span></div>
       <div class="listen-details">
         <div class="listen-duration">{duration}<span>seconds</span></div>
-        {#if !revealed}<button class="skip" type="button" onclick={() => apply(skipStage(round), true)} disabled={round.status !== 'guessing'}>{round.stageIndex === stages.length - 1 ? 'Skip & reveal' : 'Skip to a longer clip'}<SkipForward size={15}/></button>{/if}
+        {#if !revealed}<button class="skip" type="button" onclick={() => apply(skipStage(round), true)} disabled={round.status !== 'guessing'}>{round.stageIndex === stages.length - 1 ? 'Reveal answer' : 'Hear more'}<SkipForward size={15}/></button>{/if}
       </div>
     </div>
+    <div class="volume-control"><label for="volume"><Volume2 size={16}/><span>Volume</span></label><input id="volume" type="range" min="0" max="100" bind:value={volume} oninput={() => player?.setVolume(volume / 100)}/><span class="volume-value">{volume}%</span></div>
+    <p class="listen-guidance">A wrong guess or skip gives you a longer listen.</p>
     {#if round.status === 'loading' && !error}<p class="loading" role="status">Loading recording…</p>{/if}
     {#if revealed && track}
       <section class="answer" class:answer-correct={effect === 'correct'} class:answer-missed={effect === 'missed'} aria-label="Answer">
         <div class="composer">{track.composer}</div><h2>{track.work}</h2>{#if track.movement}<p class="movement">{track.movement}</p>{/if}
-        <button class="primary next" onclick={nextRound}>{mode === 'daily' && dailyRounds.length === 5 ? 'See your score' : 'Next piece'} <ArrowRight size={17}/></button>
+        <button class="primary next" bind:this={nextButton} onclick={nextRound}>{mode === 'daily' && dailyRounds.length === 5 ? 'See your score' : 'Next piece'} <ArrowRight size={17}/></button>
       </section>
     {:else}
       <form class="guess-area" bind:this={guessForm} onsubmit={(event) => { event.preventDefault(); guess(); }}>
         {#if effect === 'wrong'}{#key effectId}<div class="wrong-glow" aria-hidden="true"></div>{/key}{/if}
         <label for="work">Which work do you hear?</label>
-        <div class="guess-row"><WorkInput bind:value={selected} disabled={round.status !== 'guessing'}/><button class="primary" type="submit" disabled={!selected.trim() || round.status !== 'guessing'}>Guess <ArrowRight size={17}/></button></div>
+        <div class="guess-row"><WorkInput bind:input={workInput} bind:value={selected} disabled={round.status !== 'guessing'}/><button class="primary" type="submit" disabled={!selected.trim() || round.status !== 'guessing'}>Guess <ArrowRight size={17}/></button></div>
       </form>
     {/if}
     <div class="feedback" class:feedback-wrong={effect === 'wrong'} aria-live="polite">
-      {#if message}{#if revealed && round.solved}<CircleCheck size={16}/>{:else if revealed}<CircleHelp size={16}/>{:else}<CircleX size={16}/>{/if}<span>{message}</span>{/if}
+      {#if message}{#if revealed && round.solved}<CircleCheck size={16}/>{:else}<CircleX size={16}/>{/if}<span>{message}</span>{/if}
     </div>
     {#if error}<div class="error" role="alert"><p>{error}</p><button class="secondary" onclick={() => round.status === 'loading' && track ? loadTrack(track, resumeAfterLoad) : play()}><RotateCcw size={15}/>Try again</button>{#if round.status === 'loading' && mode === 'practice'}<button class="secondary" onclick={nextRound}>Try another recording</button>{/if}</div>{/if}
     {/if}
+  {#if revealed && track && !dailyFinished && !dailyLoading && !dailyError}<details class="credits"><summary>Recording &amp; licence</summary>{#if track.source.performer}<p>{track.source.performer}</p>{/if}<a href={track.source.url} target="_blank" rel="noreferrer">{track.source.name}</a><a href={track.source.licenseUrl} target="_blank" rel="noreferrer">{track.source.license === 'cc0' ? 'CC0 1.0' : track.source.license === 'public-domain' ? 'Public Domain' : 'Unrestricted recording permission'}</a>{#if track.source.permission}<p>{track.source.permission}</p>{/if}</details>{/if}
   </main>
-
-  <aside class="playback-panel" aria-label="Playback controls">
-    {#if mode === 'practice' || (!dailyFinished && !dailyLoading && !dailyError)}
-    <div class="round-detail"><span>Stage</span><strong>{round.stageIndex + 1} / 5</strong></div><div class="round-detail"><span>{revealed ? 'Points earned' : 'For a correct guess'}</span><strong>{format(revealed ? round.score : stage.score)} pts</strong></div>
-    <div class="rule"></div>
-    {/if}
-    <div class="volume-control"><label for="volume"><Volume2 size={16}/><span>Volume</span></label><input id="volume" type="range" min="0" max="100" bind:value={volume} oninput={() => player?.setVolume(volume / 100)}/><span class="volume-value">{volume}%</span></div>
-    {#if mode === 'daily' && challenge}<Leaderboard date={challenge.date} refresh={submitted?.id ?? ''}/>{/if}
-    {#if revealed && track && !dailyFinished && !dailyLoading && !dailyError}<details class="credits"><summary>Recording &amp; licence</summary>{#if track.source.performer}<p>{track.source.performer}</p>{/if}<a href={track.source.url} target="_blank" rel="noreferrer">{track.source.name}</a><a href={track.source.licenseUrl} target="_blank" rel="noreferrer">{track.source.license === 'cc0' ? 'CC0 1.0' : track.source.license === 'public-domain' ? 'Public Domain' : 'Unrestricted recording permission'}</a>{#if track.source.permission}<p>{track.source.permission}</p>{/if}</details>{/if}
-  </aside>
 </div>

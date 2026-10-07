@@ -2,7 +2,7 @@
   import { tick } from 'svelte';
   import { normalizeSearch, searchWorks } from '#lib/tracks/search';
 
-  let { value = $bindable(''), disabled = false } = $props<{ value?: string; disabled?: boolean }>();
+  let { value = $bindable(''), disabled = false, input = $bindable() } = $props<{ value?: string; disabled?: boolean; input?: HTMLInputElement }>();
   let open = $state(false);
   let active = $state(-1);
   let list = $state<HTMLDivElement>();
@@ -50,7 +50,7 @@
 </script>
 
 <div class="work-input">
-  <input id="work" type="text" role="combobox" bind:value {disabled}
+  <input id="work" type="text" role="combobox" bind:value bind:this={input} {disabled}
     placeholder="Piece, composer or opus number…" autocomplete="off" spellcheck="false"
     aria-autocomplete="list" aria-expanded={expanded} aria-controls="work-suggestions"
     aria-activedescendant={expanded && active >= 0 ? `work-option-${active}` : undefined}
@@ -62,8 +62,11 @@
       <div class="suggestion-list" bind:this={list} id="work-suggestions" role="listbox" aria-label="Suggested pieces">
       {#each suggestions as work, index}
         <button id={`work-option-${index}`} type="button" role="option" aria-selected={active === index}
-          tabindex="-1" class:highlighted={active === index}
-          onpointerdown={event => event.preventDefault()} onclick={() => choose(index)}>{work.label}{#if work.fuzzy}<span class="approximate-match">Similar spelling</span>{/if}</button>
+          tabindex="-1" class:highlighted={active === index} aria-label={work.label}
+          onpointerdown={event => event.preventDefault()} onclick={() => choose(index)}>
+          <span class="suggestion-title">{work.title}</span>
+          <span class="suggestion-meta">{work.composer + (work.reference ? ` · ${work.reference}` : '')}</span>
+          {#if work.fuzzy}<span class="approximate-match">Similar spelling</span>{/if}</button>
       {/each}
       </div>
       {#if !suggestions.length}<p class="no-suggestions" role="status">No matching pieces. You can still submit your guess.</p>{/if}

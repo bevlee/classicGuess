@@ -20,7 +20,7 @@ test('practice audio timing, wrong guesses, reveal and next without cumulative p
   await expect(page.getByRole('combobox', { name: 'Which work do you hear?' })).toHaveAttribute('type', 'text');
   await page.getByRole('button', { name: 'Play clip', exact: true }).click();
   await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts[0])).toEqual([0, .1]);
-  await expect(page.getByRole('button', { name: 'Play clip', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Listen again', exact: true })).toBeVisible();
   const current = catalogue.find(t => fetched[0].endsWith(t.audioUrl))!;
   const wrong = catalogue.find(t => t.workId !== current.workId)!;
   await page.locator('#work').fill(wrong.work); await page.getByRole('button', { name: 'Guess', exact: true }).click();
@@ -29,22 +29,24 @@ test('practice audio timing, wrong guesses, reveal and next without cumulative p
   await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts[1])).toEqual([0, .5]);
   await page.locator('#work').fill(current.work); await page.getByRole('button', { name: 'Guess', exact: true }).click();
   await expect(page.locator('.answer h2')).toHaveText(current.work);
-  await expect(page.locator('.stat strong')).toHaveText('1');
+  await expect(page.locator('.stat')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Next piece' })).toBeFocused();
+  await expect(page.getByRole('link', { name: 'View leaderboard' })).toHaveCount(0);
   await expect(page.locator('.timeline-labels')).toContainText('+800 points earned');
   await expect(page.getByText('Total points', { exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Next piece' })).toBeEnabled();
   await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts[2]?.[0])).toBe(0);
   await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts[2]?.[1])).toBeGreaterThan(39);
   await page.getByRole('button', { name: 'Next piece' }).click(); await expect(page.locator('.stage.active')).toHaveText('0.1s');
-  await expect(page.locator('#work')).toBeEnabled();
+  await expect(page.locator('#work')).toBeFocused();
   for (const duration of [.5, 2, 8, 15]) {
-    await page.getByRole('button', { name: 'Skip to a longer clip' }).click();
+    await page.getByRole('button', { name: 'Hear more' }).click();
     await page.getByRole('button', { name: 'Play clip', exact: true }).click();
     await expect.poll(() => page.evaluate(() => (window as unknown as { starts: number[][] }).starts.at(-1))).toEqual([0, duration]);
   }
-  await expect(page.locator('.stage.active')).toHaveText('15s'); await page.getByRole('button', { name: 'Skip & reveal' }).click();
-  await expect(page.locator('.stat strong')).toHaveText('2');
-  await page.reload(); await expect(page.locator('.stat strong')).toHaveText('0');
+  await expect(page.locator('.stage.active')).toHaveText('15s'); await page.getByRole('button', { name: 'Reveal answer' }).click();
+  await expect(page.locator('.stat')).toHaveCount(0);
+  await page.reload(); await expect(page.locator('#work')).toBeFocused();
   expect(errors).toEqual([]);
 });
 
@@ -72,7 +74,7 @@ test('curation previews a local recording and exports validated metadata', async
 test('load failures offer a retry and keep attempts intact', async ({ page }) => {
   await page.route('**/*.opus', route => route.fulfill({ status: 503, body: 'Unavailable' }));
   await page.goto('/'); await expect(page.getByRole('alert')).toContainText('503');
-  await expect(page.locator('.stage.active')).toHaveText('0.1s'); await expect(page.locator('.stat strong')).toHaveText('0');
+  await expect(page.locator('.stage.active')).toHaveText('0.1s'); await expect(page.locator('.stat')).toHaveCount(0);
   await page.unroute('**/*.opus'); await page.getByRole('button', { name: 'Try again', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Play clip', exact: true })).toBeEnabled();
 });
@@ -105,6 +107,8 @@ test('typed suggestions support accents, keyboard selection, editing and mobile 
   await expect(input).toBeEnabled();
   await input.fill('frederic chopin ballade');
   await expect(page.getByRole('option')).toHaveCount(4);
+  await expect(page.getByRole('option').first().locator('.suggestion-title')).toHaveText('Ballade No. 1 in G minor');
+  await expect(page.getByRole('option').first().locator('.suggestion-meta')).toContainText('Frédéric Chopin · Op. 23');
   await input.press('ArrowDown');
   await input.press('Enter');
   await expect(input).toHaveValue(/Chopin.*Ballade No. 1/);
@@ -137,7 +141,7 @@ test('all nocturnes remain accessible and opus searches narrow the results', asy
   await expect(page.getByRole('status')).toContainText(`${count} matching pieces`);
   const target = page.getByRole('option', { name: /C minor, Op. 48 No. 1/ });
   await expect(target).toHaveCount(1);
-  const options = await page.getByRole('option').allTextContents();
+  const options = await page.getByRole('option').evaluateAll(elements => elements.map(element => element.getAttribute('aria-label') ?? ''));
   const index = options.findIndex(text => text.includes('C minor, Op. 48 No. 1'));
   for (let i = 0; i <= index; i++) await input.press('ArrowDown');
   await expect(target).toHaveAttribute('aria-selected', 'true');
@@ -194,7 +198,7 @@ test('guess effects celebrate success, distinguish misses, and respect reduced m
   await expect(page.locator('.confetti')).toHaveCount(0);
   for (let i = 0; i < 5; i++) { await input.fill('incorrect piece'); await guess.click(); }
   await expect(page.locator('.answer-missed')).toHaveCount(1);
-  await expect(page.locator('.feedback')).toHaveText('One for next time.');
+  await expect(page.locator('.feedback')).toBeEmpty();
   await expect(page.locator('.confetti')).toHaveCount(0);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
