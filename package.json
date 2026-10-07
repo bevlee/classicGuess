@@ -1,0 +1,33 @@
+{
+  "name": "classical-guess",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "prepare": "svelte-kit sync",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@lucide/svelte": "^1.52.0",
+    "svelte": "5.57.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@sveltejs/adapter-static": "^4.0.0",
+    "@sveltejs/kit": "3.0.1",
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "@types/node": "^26.6.4",
+    "svelte-check": "^4.7.6",
+    "typescript": "^6.0.3",
+    "vite": "8.3.3",
+    "vitest": "^5.0.3"
+  },
+  "imports": {
+    "#lib/*": "./src/lib/*.ts"
+  }
+}

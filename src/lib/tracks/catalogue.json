@@ -1,0 +1,1085 @@
+[
+  {
+    "id": "a7c91e-v1",
+    "workId": "bach-goldberg",
+    "composer": "Johann Sebastian Bach",
+    "work": "Goldberg Variations, BWV 988",
+    "movement": "Aria",
+    "aliases": [
+      "goldberg",
+      "goldberg variations",
+      "bach goldberg",
+      "bwv 988"
+    ],
+    "audioUrl": "/audio/a7c91e-v1.opus",
+    "cueStart": 19.8,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Open Goldberg Variations / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Goldberg_Variations_01_Aria.ogg",
+      "performer": "Kimiko Ishizaka",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "b4f82d-v1",
+    "workId": "mozart-magic-flute",
+    "composer": "Wolfgang Amadeus Mozart",
+    "work": "The Magic Flute, K. 620",
+    "movement": "Overture",
+    "aliases": [
+      "magic flute",
+      "the magic flute",
+      "die zauberflote",
+      "zauberflote",
+      "mozart magic flute",
+      "k 620"
+    ],
+    "audioUrl": "/audio/b4f82d-v1.opus",
+    "cueStart": 50,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Mozart_-_Magic_Flute_Overture.ogg",
+      "performer": "Musopen Symphony",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "c6e12b-v1",
+    "workId": "beethoven-eroica",
+    "composer": "Ludwig van Beethoven",
+    "work": "Symphony No. 3 “Eroica”, Op. 55",
+    "movement": "IV. Finale: Allegro molto",
+    "aliases": [
+      "eroica",
+      "beethoven 3",
+      "symphony 3",
+      "symphony no 3",
+      "beethoven symphony 3",
+      "op 55"
+    ],
+    "audioUrl": "/audio/c6e12b-v1.opus",
+    "cueStart": 94,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Beethoven_SymphonyNo.3Eroica_LudwigVanBeethoven-SymphonyNo.3InEFlatMajorEroicaOp.55-04-FinaleAllegroMolto.ogg",
+      "performer": "Czech National Symphony Orchestra",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "d2a93f-v1",
+    "workId": "chopin-military",
+    "composer": "Frédéric Chopin",
+    "work": "Polonaise in A major “Military”, Op. 40 No. 1",
+    "aliases": [
+      "military polonaise",
+      "chopin military",
+      "polonaise op 40 no 1",
+      "chopin polonaise in a major",
+      "op 40 no 1"
+    ],
+    "audioUrl": "/audio/d2a93f-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Chopin_-_Polonaise_op._40_no_1.ogg",
+      "performer": "Felipe Sarro",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "e8b42c-v1",
+    "workId": "schubert-d946",
+    "composer": "Franz Schubert",
+    "work": "Three Piano Pieces, D. 946",
+    "movement": "III. Allegro in C major",
+    "aliases": [
+      "d 946",
+      "schubert d946",
+      "three piano pieces",
+      "3 piano pieces",
+      "impromptus d 946",
+      "schubert impromptu d946"
+    ],
+    "audioUrl": "/audio/e8b42c-v1.opus",
+    "cueStart": 18,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Franz_Schubert,_Impromptu_Opus_post._D_946_-_No._3_in_C_major_(Allegro).ogg",
+      "performer": "Kimiko Douglass-Ishizaka",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "f3d71a-v1",
+    "workId": "dvorak-new-world",
+    "composer": "Antonín Dvořák",
+    "work": "Symphony No. 9 “From the New World”, Op. 95",
+    "movement": "II. Largo",
+    "aliases": [
+      "new world",
+      "new world symphony",
+      "dvorak 9",
+      "symphony 9",
+      "symphony no 9",
+      "new world largo",
+      "from the new world"
+    ],
+    "audioUrl": "/audio/f3d71a-v1.opus",
+    "cueStart": 44,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Antonin_Dvorak_-_symphony_no._9_in_e_minor_'from_the_new_world',_op._95_-_ii._largo.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+  },
+  {
+    "id": "71e02a-v1",
+    "workId": "chopin-ballade-1",
+    "composer": "Frédéric Chopin",
+    "work": "Ballade No. 1 in G minor, Op. 23",
+    "aliases": [
+      "ballade 1",
+      "ballade no 1",
+      "chopin ballade 1",
+      "op 23"
+    ],
+    "audioUrl": "/audio/71e02a-v1.opus",
+    "cueStart": 35,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen — The Complete Chopin Collection / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "82f13b-v1",
+    "workId": "chopin-fantaisie-impromptu",
+    "composer": "Frédéric Chopin",
+    "work": "Fantaisie-Impromptu in C-sharp minor, Op. 66",
+    "aliases": [
+      "fantaisie impromptu",
+      "fantasie impromptu",
+      "fantasy impromptu",
+      "op 66"
+    ],
+    "audioUrl": "/audio/82f13b-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen — The Complete Chopin Collection / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "93a24c-v1",
+    "workId": "chopin-minute-waltz",
+    "composer": "Frédéric Chopin",
+    "work": "Waltz in D-flat major “Minute”, Op. 64 No. 1",
+    "aliases": [
+      "minute waltz",
+      "chopin minute waltz",
+      "op 64 no 1"
+    ],
+    "audioUrl": "/audio/93a24c-v1.opus",
+    "cueStart": 8,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen — The Complete Chopin Collection / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "a4b35d-v1",
+    "workId": "chopin-nocturne-9-2",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in E-flat major, Op. 9 No. 2",
+    "aliases": [
+      "nocturne op 9 no 2",
+      "chopin nocturne 9 2",
+      "op 9 no 2"
+    ],
+    "audioUrl": "/audio/a4b35d-v1.opus",
+    "cueStart": 15,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen — The Complete Chopin Collection / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "b5c46e-v1",
+    "workId": "chopin-heroic",
+    "composer": "Frédéric Chopin",
+    "work": "Polonaise in A-flat major “Heroic”, Op. 53",
+    "aliases": [
+      "heroic polonaise",
+      "chopin heroic",
+      "polonaise op 53",
+      "op 53"
+    ],
+    "audioUrl": "/audio/b5c46e-v1.opus",
+    "cueStart": 40,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen — The Complete Chopin Collection / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "c6d57f-v1",
+    "workId": "chopin-grande-valse",
+    "composer": "Frédéric Chopin",
+    "work": "Grande valse brillante in E-flat major, Op. 18",
+    "aliases": [
+      "grande valse brillante",
+      "grande valse",
+      "op 18"
+    ],
+    "audioUrl": "/audio/c6d57f-v1.opus",
+    "cueStart": 10,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen — The Complete Chopin Collection / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "d7e680-v1",
+    "workId": "chopin-waltz-64-2",
+    "composer": "Frédéric Chopin",
+    "work": "Waltz in C-sharp minor, Op. 64 No. 2",
+    "aliases": [
+      "waltz op 64 no 2",
+      "chopin waltz 64 2",
+      "op 64 no 2"
+    ],
+    "audioUrl": "/audio/d7e680-v1.opus",
+    "cueStart": 15,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen — The Complete Chopin Collection / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "e8f791-v1",
+    "workId": "chopin-nocturne-15-2",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in F-sharp major, Op. 15 No. 2",
+    "aliases": [
+      "nocturne op 15 no 2",
+      "chopin nocturne 15 2",
+      "op 15 no 2"
+    ],
+    "audioUrl": "/audio/e8f791-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Chopin_-_Nocturne_Op._15_no._2_in_F_sharp_major.ogg",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "performer": "Vadim Chaimovich"
+    }
+  },
+  {
+    "id": "f908a2-v1",
+    "workId": "liszt-campanella",
+    "composer": "Franz Liszt",
+    "work": "La Campanella, S. 141 No. 3",
+    "aliases": [
+      "la campanella",
+      "campanella",
+      "liszt la campanella",
+      "s 141 no 3"
+    ],
+    "audioUrl": "/audio/f908a2-v1.opus",
+    "cueStart": 20,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Liszt-La_Campanella-Greiss.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Romuald Greiss"
+    }
+  },
+  {
+    "id": "0a19b3-v1",
+    "workId": "rachmaninoff-prelude-3-2",
+    "composer": "Sergei Rachmaninoff",
+    "work": "Prelude in C-sharp minor, Op. 3 No. 2",
+    "aliases": [
+      "rachmaninoff prelude c sharp minor",
+      "rachmaninov prelude c sharp minor",
+      "prelude op 3 no 2",
+      "op 3 no 2"
+    ],
+    "audioUrl": "/audio/0a19b3-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "U.S. National Park Service / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Sergei_Rachmaninoff_performs_Rachmaninoff's_Prelude_in_C_sharp_minor,_Op._3.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Sergei Rachmaninoff"
+    }
+  },
+  {
+    "id": "1b2ac4-v1",
+    "workId": "satie-gymnopedie-1",
+    "composer": "Erik Satie",
+    "work": "Gymnopédie No. 1",
+    "aliases": [
+      "gymnopedie 1",
+      "gymnopedie no 1",
+      "satie gymnopedie 1"
+    ],
+    "audioUrl": "/audio/1b2ac4-v1.opus",
+    "cueStart": 10,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Erik_Satie_-_gymnopedies_-_la_1_ere._lent_et_douloureux.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Robin Alciatore"
+    }
+  },
+  {
+    "id": "2c3bd5-v1",
+    "workId": "beethoven-moonlight",
+    "composer": "Ludwig van Beethoven",
+    "work": "Piano Sonata No. 14 “Moonlight”, Op. 27 No. 2",
+    "aliases": [
+      "moonlight",
+      "moonlight sonata",
+      "beethoven moonlight",
+      "op 27 no 2"
+    ],
+    "audioUrl": "/audio/2c3bd5-v1.opus",
+    "cueStart": 20,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Sonate_Clair_de_lune.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Schwarzer Stern"
+    },
+    "movement": "I. Adagio sostenuto"
+  },
+  {
+    "id": "3d4ce6-v1",
+    "workId": "debussy-clair-de-lune",
+    "composer": "Claude Debussy",
+    "work": "Clair de lune, from Suite bergamasque",
+    "aliases": [
+      "clair de lune",
+      "claire de lune",
+      "debussy clair de lune",
+      "suite bergamasque"
+    ],
+    "audioUrl": "/audio/3d4ce6-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "David O — Clair de lune",
+      "url": "https://davidomusic.net/clairdelune",
+      "performer": "David O",
+      "license": "unrestricted-permission",
+      "licenseUrl": "https://davidomusic.net/clairdelune",
+      "permission": "The performer permits use, editing and broadcasting of this recording without restriction."
+    }
+  },
+  {
+    "id": "b30ffab7fc-v1",
+    "workId": "chopin-nocturne-9-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in B-flat minor, Op. 9 No. 1",
+    "aliases": [
+      "nocturne op 9 No. 1",
+      "chopin nocturne 9-1",
+      "op 9 No. 1"
+    ],
+    "audioUrl": "/audio/b30ffab7fc-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "bae7dbe15f-v1",
+    "workId": "chopin-nocturne-9-3",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in B major, Op. 9 No. 3",
+    "aliases": [
+      "nocturne op 9 No. 3",
+      "chopin nocturne 9-3",
+      "op 9 No. 3"
+    ],
+    "audioUrl": "/audio/bae7dbe15f-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "6143602d17-v1",
+    "workId": "chopin-nocturne-15-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in F major, Op. 15 No. 1",
+    "aliases": [
+      "nocturne op 15 No. 1",
+      "chopin nocturne 15-1",
+      "op 15 No. 1"
+    ],
+    "audioUrl": "/audio/6143602d17-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "35cfc18499-v1",
+    "workId": "chopin-nocturne-27-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in C-sharp minor, Op. 27 No. 1",
+    "aliases": [
+      "nocturne op 27 No. 1",
+      "chopin nocturne 27-1",
+      "op 27 No. 1"
+    ],
+    "audioUrl": "/audio/35cfc18499-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "e798caca3e-v1",
+    "workId": "chopin-nocturne-27-2",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in D-flat major, Op. 27 No. 2",
+    "aliases": [
+      "nocturne op 27 No. 2",
+      "chopin nocturne 27-2",
+      "op 27 No. 2"
+    ],
+    "audioUrl": "/audio/e798caca3e-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "c8c88ec51f-v1",
+    "workId": "chopin-nocturne-32-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in B major, Op. 32 No. 1",
+    "aliases": [
+      "nocturne op 32 No. 1",
+      "chopin nocturne 32-1",
+      "op 32 No. 1"
+    ],
+    "audioUrl": "/audio/c8c88ec51f-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "44b1f39f52-v1",
+    "workId": "chopin-nocturne-32-2",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in A-flat major, Op. 32 No. 2",
+    "aliases": [
+      "nocturne op 32 No. 2",
+      "chopin nocturne 32-2",
+      "op 32 No. 2"
+    ],
+    "audioUrl": "/audio/44b1f39f52-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "05b5c00506-v1",
+    "workId": "chopin-nocturne-48-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in C minor, Op. 48 No. 1",
+    "aliases": [
+      "nocturne op 48 No. 1",
+      "chopin nocturne 48-1",
+      "op 48 No. 1"
+    ],
+    "audioUrl": "/audio/05b5c00506-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "fc248ae865-v1",
+    "workId": "chopin-nocturne-48-2",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in F-sharp minor, Op. 48 No. 2",
+    "aliases": [
+      "nocturne op 48 No. 2",
+      "chopin nocturne 48-2",
+      "op 48 No. 2"
+    ],
+    "audioUrl": "/audio/fc248ae865-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "29ec9ad640-v1",
+    "workId": "chopin-nocturne-55-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in F minor, Op. 55 No. 1",
+    "aliases": [
+      "nocturne op 55 No. 1",
+      "chopin nocturne 55-1",
+      "op 55 No. 1"
+    ],
+    "audioUrl": "/audio/29ec9ad640-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "e2ceeaee95-v1",
+    "workId": "chopin-nocturne-55-2",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in E-flat major, Op. 55 No. 2",
+    "aliases": [
+      "nocturne op 55 No. 2",
+      "chopin nocturne 55-2",
+      "op 55 No. 2"
+    ],
+    "audioUrl": "/audio/e2ceeaee95-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "8c6f568fca-v1",
+    "workId": "chopin-nocturne-62-2",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in E major, Op. 62 No. 2",
+    "aliases": [
+      "nocturne op 62 No. 2",
+      "chopin nocturne 62-2",
+      "op 62 No. 2"
+    ],
+    "audioUrl": "/audio/8c6f568fca-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "b7f9a2319f-v1",
+    "workId": "chopin-nocturne-72-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in E minor, Op. 72 No. 1",
+    "aliases": [
+      "nocturne op 72 No. 1",
+      "chopin nocturne 72-1",
+      "op 72 No. 1"
+    ],
+    "audioUrl": "/audio/b7f9a2319f-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "efa1083f42-v1",
+    "workId": "chopin-nocturne-posth-csharp",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in C-sharp minor, B. 49 (posthumous)",
+    "aliases": [
+      "nocturne 20",
+      "nocturne in c sharp minor",
+      "nocturne b 49"
+    ],
+    "audioUrl": "/audio/efa1083f42-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "c054ecfe53-v1",
+    "workId": "chopin-nocturne-posth-cminor",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in C minor, B. 108 (posthumous)",
+    "aliases": [
+      "nocturne 21",
+      "nocturne b 108"
+    ],
+    "audioUrl": "/audio/c054ecfe53-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "2a949dbfce-v1",
+    "workId": "chopin-nocturne-15-3",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in G minor, Op. 15 No. 3",
+    "aliases": [
+      "nocturne op 15 No. 3",
+      "chopin nocturne 15-3",
+      "op 15 No. 3"
+    ],
+    "audioUrl": "/audio/2a949dbfce-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Chopin%20Nocturne%20in%20G%20minor,%20Op%2015%20no%203%20Olga%20Gurevich.ogg",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "performer": "Olga Gurevich"
+    }
+  },
+  {
+    "id": "329a3c05d5-v1",
+    "workId": "chopin-nocturne-37-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in G minor, Op. 37 No. 1",
+    "aliases": [
+      "nocturne op 37 No. 1",
+      "chopin nocturne 37-1",
+      "op 37 No. 1"
+    ],
+    "audioUrl": "/audio/329a3c05d5-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Chopin-%20Nocturne%20op.%2037%20no.%201.ogg",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "performer": "Constantin Stephan"
+    }
+  },
+  {
+    "id": "cf712848cf-v1",
+    "workId": "chopin-nocturne-37-2",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in G major, Op. 37 No. 2",
+    "aliases": [
+      "nocturne op 37 No. 2",
+      "chopin nocturne 37-2",
+      "op 37 No. 2"
+    ],
+    "audioUrl": "/audio/cf712848cf-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Chopin%20Nocturne%20Op%2037%20no%202%20in%20G%20major%20Olga%20Gurevich.ogg",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "performer": "Olga Gurevich"
+    }
+  },
+  {
+    "id": "e5a0c38ca8-v1",
+    "workId": "chopin-nocturne-62-1",
+    "composer": "Frédéric Chopin",
+    "work": "Nocturne in B major, Op. 62 No. 1",
+    "aliases": [
+      "nocturne op 62 No. 1",
+      "chopin nocturne 62-1",
+      "op 62 No. 1"
+    ],
+    "audioUrl": "/audio/e5a0c38ca8-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Frederic%20Chopin%20-%20nocturne%20no.%201%20in%20b%20major,%20op.%2062.oga",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "performer": "Olga Gurevich"
+    }
+  },
+  {
+    "id": "d2cf476c72-v1",
+    "workId": "chopin-ballade-2",
+    "composer": "Frédéric Chopin",
+    "work": "Ballade No. 2 in F major, Op. 38",
+    "aliases": [
+      "ballade 2",
+      "ballade no 2",
+      "chopin ballade 2",
+      "op 38"
+    ],
+    "audioUrl": "/audio/d2cf476c72-v1.opus",
+    "cueStart": 25,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "c3bf8b4caf-v1",
+    "workId": "chopin-ballade-3",
+    "composer": "Frédéric Chopin",
+    "work": "Ballade No. 3 in A-flat major, Op. 47",
+    "aliases": [
+      "ballade 3",
+      "ballade no 3",
+      "chopin ballade 3",
+      "op 47"
+    ],
+    "audioUrl": "/audio/c3bf8b4caf-v1.opus",
+    "cueStart": 25,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "9a59d120a8-v1",
+    "workId": "chopin-ballade-4",
+    "composer": "Frédéric Chopin",
+    "work": "Ballade No. 4 in F minor, Op. 52",
+    "aliases": [
+      "ballade 4",
+      "ballade no 4",
+      "chopin ballade 4",
+      "op 52"
+    ],
+    "audioUrl": "/audio/9a59d120a8-v1.opus",
+    "cueStart": 25,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "a06c16384c-v1",
+    "workId": "beethoven-fur-elise",
+    "composer": "Ludwig van Beethoven",
+    "work": "Für Elise, WoO 59",
+    "aliases": [
+      "fur elise",
+      "for elise",
+      "woo 59"
+    ],
+    "audioUrl": "/audio/a06c16384c-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:FurElise.ogg",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "performer": "V. Gao"
+    }
+  },
+  {
+    "id": "437a2e162d-v1",
+    "workId": "satie-gymnopedie-3",
+    "composer": "Erik Satie",
+    "work": "Gymnopédie No. 3",
+    "aliases": [
+      "gymnopedie 3",
+      "gymnopedie no 3"
+    ],
+    "audioUrl": "/audio/437a2e162d-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Gymnop%C3%A9die%20no.3.ogg",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "performer": "Teknopazzo"
+    }
+  },
+  {
+    "id": "2e1191b6c4-v1",
+    "workId": "bach-siloti-prelude",
+    "composer": "Johann Sebastian Bach / Alexander Siloti",
+    "work": "Prelude in B minor (after BWV 855a)",
+    "aliases": [
+      "bach siloti prelude",
+      "siloti prelude",
+      "prelude in b minor",
+      "bwv 855a"
+    ],
+    "audioUrl": "/audio/2e1191b6c4-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Bach-Siloti,%20Prelude%20in%20B%20minor%20(J.%20S.%20Bach,%20arranged%20Siloti),%20arrangement%20of%20Prelude%20in%20E%20minor%20BWV%20855a.ogg",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "performer": "Felipe Sarro"
+    }
+  },
+  {
+    "id": "133c34a2ab-v1",
+    "workId": "beethoven-moonlight",
+    "composer": "Ludwig van Beethoven",
+    "work": "Piano Sonata No. 14 “Moonlight”, Op. 27 No. 2",
+    "aliases": [
+      "moonlight",
+      "moonlight sonata",
+      "beethoven moonlight",
+      "op 27 no 2"
+    ],
+    "audioUrl": "/audio/133c34a2ab-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Moonlight%20Sonata%20Allegretto.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Paul Pitman"
+    },
+    "movement": "II. Allegretto"
+  },
+  {
+    "id": "77ee52f7f2-v1",
+    "workId": "beethoven-moonlight",
+    "composer": "Ludwig van Beethoven",
+    "work": "Piano Sonata No. 14 “Moonlight”, Op. 27 No. 2",
+    "aliases": [
+      "moonlight",
+      "moonlight sonata",
+      "beethoven moonlight",
+      "op 27 no 2"
+    ],
+    "audioUrl": "/audio/77ee52f7f2-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Moonlight%20Sonata%20Presto.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Paul Pitman"
+    },
+    "movement": "III. Presto agitato"
+  },
+  {
+    "id": "8672d86d40-v1",
+    "workId": "liszt-transcendental-10",
+    "composer": "Franz Liszt",
+    "work": "Transcendental Étude No. 10 in F minor, S. 139",
+    "aliases": [
+      "liszt etude 10",
+      "transcendental etude 10",
+      "s 139 no 10"
+    ],
+    "audioUrl": "/audio/8672d86d40-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Liszt%20transcendental%20etude%20n10.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "permission": "Uploader Liapunov expressly released the recording into the public domain; this is the permission used here, rather than the alternative attribution/share-alike licences."
+    }
+  },
+  {
+    "id": "f4f23ae13f-v1",
+    "workId": "chopin-raindrop",
+    "composer": "Frédéric Chopin",
+    "work": "Prelude in D-flat major “Raindrop”, Op. 28 No. 15",
+    "aliases": [
+      "raindrop",
+      "raindrop prelude",
+      "prelude op 28 no 15",
+      "op 28 no 15"
+    ],
+    "audioUrl": "/audio/f4f23ae13f-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Musopen / Internet Archive",
+      "url": "https://archive.org/details/musopen-chopin",
+      "license": "cc0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  {
+    "id": "e26c6008d0-v1",
+    "workId": "schumann-traumerei",
+    "composer": "Robert Schumann",
+    "work": "Träumerei, from Kinderszenen, Op. 15 No. 7",
+    "aliases": [
+      "traumerei",
+      "dreaming",
+      "schumann dreaming",
+      "op 15 no 7"
+    ],
+    "audioUrl": "/audio/e26c6008d0-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Robert%20Schumann%20-%20scenes%20from%20childhood,%20op.%2015%20-%20vii.%20dreaming.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Donald Betts"
+    }
+  },
+  {
+    "id": "5d6a740150-v1",
+    "workId": "liszt-transcendental-8",
+    "composer": "Franz Liszt",
+    "work": "Transcendental Étude No. 8 “Wilde Jagd”, S. 139",
+    "aliases": [
+      "wilde jagd",
+      "wild hunt",
+      "transcendental etude 8",
+      "liszt etude 8"
+    ],
+    "audioUrl": "/audio/5d6a740150-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Wild%20hunt.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Giorgi Latsabidze"
+    }
+  },
+  {
+    "id": "1ea03db241-v1",
+    "workId": "liszt-transcendental-9",
+    "composer": "Franz Liszt",
+    "work": "Transcendental Étude No. 9 “Ricordanza”, S. 139",
+    "aliases": [
+      "ricordanza",
+      "transcendental etude 9",
+      "liszt etude 9"
+    ],
+    "audioUrl": "/audio/1ea03db241-v1.opus",
+    "cueStart": 12,
+    "excerptDuration": 40,
+    "source": {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Liszt%20ricordanza.ogg",
+      "license": "public-domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "performer": "Giorgi Latso (Giorgi Latsabidze)"
+    }
+  }
+]
