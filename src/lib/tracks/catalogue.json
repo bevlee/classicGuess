@@ -708,7 +708,7 @@
     }
   },
   {
-    "id": "e5a0c38ca8-v1",
+    "id": "e5a0c38ca8-v2",
     "workId": "chopin-nocturne-62-1",
     "composer": "Frédéric Chopin",
     "work": "Nocturne in B major, Op. 62 No. 1",
@@ -717,8 +717,8 @@
       "chopin nocturne 62-1",
       "op 62 No. 1"
     ],
-    "audioUrl": "/audio/e5a0c38ca8-v1.opus",
-    "cueStart": 12,
+    "audioUrl": "/audio/e5a0c38ca8-v2.opus",
+    "cueStart": 13.05,
     "excerptDuration": 40,
     "source": {
       "name": "Wikimedia Commons",

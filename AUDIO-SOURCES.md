@@ -347,9 +347,11 @@ Clair de lune uses David O’s unrestricted permission for use, editing and broa
 - Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Frederic%20Chopin%20-%20nocturne%20no.%201%20in%20b%20major,%20op.%2062.oga)
 - Recording permission: cc0 ([details](https://creativecommons.org/publicdomain/zero/1.0/))
 - Performer: Olga Gurevich
-- Original cue: 12 seconds; generated excerpt: 40 seconds.
-- Asset: `static/audio/e5a0c38ca8-v1.opus`
-- SHA-256: `cdc8618a71619114752d6c0de73415d895d240bf25963c375252a666863c6347`
+- Original cue: 13.05 seconds; generated excerpt: 40 seconds.
+- Asset: `static/audio/e5a0c38ca8-v2.opus`
+- SHA-256: `d5cae623b3869b8fd33d0a569e335f4e88572aed0302b971f64c130e841be84d`
+
+- Cue revised on 9 October 2026: start just before the phrase attack around 13.11 seconds, skipping the introductory chord decay and pause caught by the original 12-second cue. The v1 asset remains available for existing daily challenge snapshots.
 
 ## Frédéric Chopin — Ballade No. 2 in F major, Op. 38
 
